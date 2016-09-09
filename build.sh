@@ -19,6 +19,11 @@ mkdir -p public/{js,css,images,files}
 echo "render templates"
 $JADE app/index.jade -o public/
 
+# render templates from i18n
+for lang in $(ls app/i18n); do
+  $JADE app/i18n/${lang}/index.jade -o public/${lang}/
+done
+
 
 # process vendor js
 echo "render js"
